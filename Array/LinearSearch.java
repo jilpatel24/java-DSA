@@ -1,7 +1,6 @@
 class array{
     
     int arr[]={1,23,3,14,5,16,7,8}; 
-    boolean isThere = false;
     void findNum(){
     
     int target=16;
