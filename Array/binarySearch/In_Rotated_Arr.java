@@ -1,18 +1,26 @@
-class Solution {
-    public int search(int[] nums, int target) {
-      
-        int pivot=Find_pivot(nums);
+public class p2{
+    public static void main(String[] args) {
+        int[] arr={2,5,6,7,9,12,14};
+        int target=7;
+        Find_pivot(arr);
+        int ans= search(arr, target);
+        System.out.println("Ans :"+ans);
+    }
+    static int search(int[] arr,int target){
+        int pivot=Find_pivot(arr);
         if(pivot == -1){
-            return binarySearch(nums,target,0,nums.length-1);
+            return binarySearch(arr,target,0,arr.length-1);
         }
-        if(nums[pivot] == target){
+        if(arr[pivot] == target){
             return pivot;
-        }else if (target >= nums[pivot]) {
-            return binarySearch(nums, target, 0, pivot-1);
+        }else if (target >= arr[pivot]) {
+            return binarySearch(arr, target, 0, pivot-1);
         }
-        return binarySearch(nums, target, pivot+1,nums.length-1);
+         int ans = binarySearch(arr, target, pivot+1,arr.length-1);
+         System.out.println(ans);
+         return 0;
         }
-     int binarySearch(int[] arr,int target,int start,int end){
+    static int binarySearch(int[] arr,int target,int start,int end){
       int mid=0;
 
       while(start <= end){
@@ -27,3 +35,28 @@ class Solution {
          else {
            return mid; 
          }
+        
+      }
+     
+      return -1; 
+   }
+    static int Find_pivot(int[] arr){
+    int start=0;
+    int end=arr.length-1;
+    while(start <= end){
+        int mid = start + (end-start)/2;
+        if(mid > mid+1){
+           return mid;
+        }else if(mid < end && mid < mid-1){
+           return mid-1;
+        }
+        else if(arr[start] >= arr[mid])//or arr[mid] <= arr[start]
+        {
+            end = mid-1;
+        }else{
+            start = mid+1;
+        }
+    }    
+    return -1;      
+    }
+}
