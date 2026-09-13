@@ -11,7 +11,7 @@ class Solution {
        return ans;
     }
 
-    public int start_end_Index(int[] nums,int target,boolean findIndex){
+    public int start_end_Index(int[] nums,int target,boolean findIndex){//find index used for find occurence of target element(1st ind and last ind)
       int start=0;
       int end=nums.length-1;
       int mid;
