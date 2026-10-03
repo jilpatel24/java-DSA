@@ -1,24 +1,17 @@
-public class p1 {
-    static int rev(int num){
-       int digit = (int)(Math.log10(num)+1);
-  
-       return helper(num,digit);
+public class p1{
+   static int rev(int n){
+     int digit = (int)(Math.log10(n)+1);
+     return helper(n,digit-1);
     }
-    static int helper(int n,int digit){
-        if(n % 10 == n){
-            System.out.print(n);
-            return n;
-        }
-        digit = n-1;
-        int rem = n % 10;
-        System.out.print(n%10);
-        int ans = rem * 10 ^ digit;
-       
-        n /= 10;
-        return helper(n, digit-1);
-        
+    static int helper(int n,int power){//pow is use for total digits like 1234 there is 4 digit
+      if(n % 10 == n){
+        return n;
+      }
+      int rem = n % 10;
+      int ans = rem *(int)(Math.pow(10,power));
+      return ans + helper(n /= 10 , power-1);
     }
-    public static void main(String[] args) {
-        rev(12346);
-    }
+   public static void main(String[] args) {
+       System.out.println(rev(4321)); 
+   }
 }
