@@ -1,0 +1,15 @@
+public class p1{
+    static void subSet(String str,String p) {
+       if(str.isEmpty()){
+        System.out.println(p);
+        return;
+       }
+     char ch = str.charAt(0);
+     subSet(str.substring(1), p);
+     subSet(str.substring(1), p+ch);
+     
+     }
+   public static void main(String[] args) {
+     subSet("abcd","");  
+   }
+}
